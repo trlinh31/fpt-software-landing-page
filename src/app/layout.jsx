@@ -1,8 +1,9 @@
-import { Inter } from "next/font/google";
+import { Lexend } from "next/font/google";
 import "@/assets/styles/globals.css";
 import HeaderComponent from "@/components/layouts/header";
+import { Toaster } from "react-hot-toast";
 
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
+const lexend = Lexend({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
 
 export const metadata = {
   title: "FPT Software | Lắp Mạng FPT Hà Nội - Khuyến Mãi Đăng Ký Cáp Quang",
@@ -13,9 +14,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${lexend.className} antialiased`}>
         <HeaderComponent />
         <main>{children}</main>
+        <Toaster toastOptions={{ duration: 5000 }} />
       </body>
     </html>
   );

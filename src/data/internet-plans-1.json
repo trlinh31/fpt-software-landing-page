@@ -1,0 +1,68 @@
+[
+  {
+    "planGroup": "Gói cước 1 Modem Wifi 6",
+    "plans": [
+      {
+        "name": "GIGA",
+        "speed": "300Mbps/300Mbps",
+        "districtPrice": 220000,
+        "suburbPrice": 190000,
+        "networkFee": 299000
+      },
+      {
+        "name": "SKY",
+        "speed": "Max 1Gbps/300Mbps",
+        "districtPrice": 235000,
+        "suburbPrice": 205000,
+        "networkFee": 299000
+      },
+      {
+        "name": "F.Game",
+        "speed": "Max 1Gbps/300Mbps + UltraFast",
+        "districtPrice": 295000,
+        "suburbPrice": 265000,
+        "networkFee": 299000
+      },
+      {
+        "name": "META",
+        "speed": "Max 1Gbps/Max 1Gbps",
+        "districtPrice": 325000,
+        "suburbPrice": 300000,
+        "networkFee": 299000
+      }
+    ]
+  },
+  {
+    "planGroup": "Gói cước 1 Modem Wifi 7",
+    "plans": [
+      {
+        "name": "GIGA",
+        "speed": "300Mbps/300Mbps",
+        "districtPrice": 220000,
+        "suburbPrice": 190000,
+        "networkFee": 299000
+      },
+      {
+        "name": "GIGA",
+        "speed": "300Mbps/300Mbps",
+        "districtPrice": 220000,
+        "suburbPrice": 190000,
+        "networkFee": 299000
+      },
+      {
+        "name": "GIGA",
+        "speed": "300Mbps/300Mbps",
+        "districtPrice": 220000,
+        "suburbPrice": 190000,
+        "networkFee": 299000
+      },
+      {
+        "name": "GIGA",
+        "speed": "300Mbps/300Mbps",
+        "districtPrice": 220000,
+        "suburbPrice": 190000,
+        "networkFee": 299000
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Tốc độ truy cập",
+    "super250": "250 Mbps",
+    "super400": "400 Mbps",
+    "super500": "500 Mbps",
+    "lux500": "500 Mbps",
+    "lux800": "800 Mbps"
+  },
+  {
+    "name": "Cước VNĐ/tháng",
+    "super250": "545.000",
+    "super400": "1.400.000",
+    "super500": "2.500.000",
+    "lux500": "800.000",
+    "lux800": "1.000.000"
+  },
+  {
+    "name": "Thiết bị",
+    "super250": "01 Mikrotik RB760iGS hoặc 01 EdgeRouter X SFP hoặc 01 Internet Hub AX1800GZ",
+    "super400": "01 Vigor 2927 hoặc 01 Mikrotik RB760iGS hoặc 01 EdgeRouter X SFP",
+    "super500": "01 Mikrotik RB4011iGSRM + 1 Unifi AC Pro",
+    "lux500": "01 ONT Wifi 5 + 02 Access Point AX8000C",
+    "lux800": "01 ONT Wifi 5 + 02 Access Point AX8000C"
+  },
+  {
+    "name": "Phí hòa mạng",
+    "super250": "500.000",
+    "super400": "700.000",
+    "super500": "700.000",
+    "lux500": "1.200.000",
+    "lux800": "1.200.000"
+  },
+  {
+    "name": "Trả trước 6 tháng",
+    "super250": "Miễn phí thiết bị",
+    "super400": "Miễn phí thiết bị",
+    "super500": "Miễn phí thiết bị",
+    "lux500": "Phí hòa mạng giảm còn 900.000",
+    "lux800": "Phí hòa mạng giảm còn 900.000"
+  },
+  {
+    "name": "Trả trước 12 tháng",
+    "super250": "Tặng thêm 1 tháng cước",
+    "super400": "Tặng thêm 1 tháng cước",
+    "super500": "Tặng thêm 1 tháng cước",
+    "lux500": "Phí hòa mạng giảm còn 600.000 + Tặng thêm 1 tháng cước",
+    "lux800": "Phí hòa mạng giảm còn 600.000 + Tặng thêm 1 tháng cước"
+  },
+  {
+    "name": "Trả trước 24 tháng",
+    "super250": "Tặng thêm 2 tháng cước",
+    "super400": "Tặng thêm 2 tháng cước",
+    "super500": "Tặng thêm 2 tháng cước",
+    "lux500": "N/A",
+    "lux800": "N/A"
+  }
+]

@@ -26,7 +26,7 @@ export default function PackageCardComponent({ pkg }) {
               </li>
             ))}
           </ul>
-          <ButtonComponent label={"Đăng ký ngay"} />
+          <ButtonComponent label='Đăng ký ngay' />
         </div>
       </div>
     </>

@@ -1,12 +1,16 @@
 import BannerSlideComponent from "@/components/banner-slide";
-import ProposalPackageComponent from "@/components/proposal-package";
+import CategoryListComponent from "@/components/category-list";
+import ContactComponent from "@/components/contact";
 
 export default function Home() {
   return (
     <>
       <div className='space-y-16'>
         <BannerSlideComponent />
-        <ProposalPackageComponent />
+        <div className='container space-y-16 pb-10'>
+          <CategoryListComponent />
+          <ContactComponent />
+        </div>
       </div>
     </>
   );

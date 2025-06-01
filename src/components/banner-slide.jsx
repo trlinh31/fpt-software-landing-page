@@ -8,7 +8,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "@/assets/styles/swiper-custom.css";
 import { BANNER_IMAGES } from "@/data/banner";
-import Image from "next/image";
 
 export default function BannerSlideComponent() {
   const pagination = {
@@ -31,7 +30,7 @@ export default function BannerSlideComponent() {
         {BANNER_IMAGES.map((item, index) => (
           <SwiperSlide key={index}>
             <div className='relative w-full md:h-[560px] h-[287px]'>
-              <Image src={item.url} className='w-full h-full object-cover' fill alt='FPT Software' />
+              <img src={item.url} className='w-full h-full object-cover' alt='FPT Software' />
             </div>
           </SwiperSlide>
         ))}

@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import FptLogoImage from "@/assets/images/fpt-logo.svg";
+import FptLogoImagePath from "@/assets/images/fpt-logo.svg";
 import Image from "next/image";
 import { MENU_ITEMS } from "@/data/menu";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function NavbarComponent() {
   const [isShowMenu, setIsShowMenu] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsShowMenu(!isShowMenu);
@@ -16,19 +18,27 @@ export default function NavbarComponent() {
 
   return (
     <>
-      <div className='navbar'>
+      <div className='navbar shadow'>
         <div className='container flex h-full'>
           <div className='w-full flex items-center justify-between py-4'>
-            <Image src={FptLogoImage} alt='FPT logo' />
+            <Link href='/'>
+              <Image src={FptLogoImagePath} alt='FPT logo' />
+            </Link>
 
             <ul className='hidden md:flex items-center gap-x-14'>
-              {MENU_ITEMS.map((item, index) => (
-                <li
-                  key={index}
-                  className='font-semibold text-[18px] hover:text-primary duration-100 transition-colors ease-in'>
-                  <Link href={item.path}>{item.title}</Link>
-                </li>
-              ))}
+              {MENU_ITEMS.map((item, index) => {
+                const isActive = pathname === item.path;
+
+                return (
+                  <li
+                    key={index}
+                    className={`font-semibold text-[18px] hover:text-custom duration-100 transition-colors ease-in ${
+                      isActive ? "text-custom" : ""
+                    }`}>
+                    <Link href={item.path}>{item.title}</Link>
+                  </li>
+                );
+              })}
             </ul>
 
             {/* Mobile */}
@@ -48,13 +58,19 @@ export default function NavbarComponent() {
                   }`}
                   onClick={(e) => e.stopPropagation()}>
                   <ul className='divide-y'>
-                    {MENU_ITEMS.map((item, index) => (
-                      <li key={index} className='w-full'>
-                        <Link href={item.path} className='pl-[20px] py-[15px] block'>
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
+                    {MENU_ITEMS.map((item, index) => {
+                      const isActive = pathname === item.path;
+
+                      return (
+                        <li key={index} className='w-full' onClick={toggleMenu}>
+                          <Link
+                            href={item.path}
+                            className={`pl-[20px] py-[15px] block ${isActive ? "text-custom" : ""}`}>
+                            {item.title}
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </nav>
