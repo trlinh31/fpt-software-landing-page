@@ -23,7 +23,7 @@ export default function CameraPage() {
           <div className='container'>
             <iframe
               src='https://www.youtube.com/embed/kqlB9X20ClU?autoplay=1&rel=0'
-              className='w-full h-[800px]'
+              className='w-full md:h-[800px]'
               frameBorder='0'></iframe>
           </div>
         </div>

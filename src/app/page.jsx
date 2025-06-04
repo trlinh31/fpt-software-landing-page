@@ -6,9 +6,9 @@ import ServiceListComponent from "@/components/service-list";
 export default function Home() {
   return (
     <>
-      <div className='space-y-16'>
+      <div className='space-y-10 md:space-y-16'>
         <BannerSlideComponent />
-        <div className='container space-y-16 pb-10'>
+        <div className='container space-y-10 md:space-y-16 pb-10'>
           <CategoryListComponent />
           <ContactComponent />
           <ServiceListComponent />
