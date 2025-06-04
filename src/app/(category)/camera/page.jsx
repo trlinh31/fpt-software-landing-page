@@ -7,10 +7,10 @@ export default function CameraPage() {
   return (
     <>
       <section className='space-y-10'>
-        <div className='w-full h-[500px]'>
+        <div className='w-full md:h-[600px] h-[287px]'>
           <img
             src='https://s3-api.fpt.vn/fptvn-storage/2025-01-16/1737014670_fptcameraantoanvuottroi.webp'
-            className='w-full h-full'
+            className='w-full h-full object-cover'
             alt='FPT Software'
           />
         </div>
