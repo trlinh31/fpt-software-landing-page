@@ -36,7 +36,8 @@ export default function ContactComponent() {
       !formValue.phoneNumber.trim() ||
       !formValue.address.trim() ||
       !REGEX.VALID_FULLNAME.test(formValue.fullName) ||
-      !REGEX.VALID_VIETNAM_PHONE_NUMBER.test(formValue.phoneNumber)
+      !REGEX.VALID_VIETNAM_PHONE_NUMBER.test(formValue.phoneNumber) ||
+      !formValue.typeService
     );
   };
 
