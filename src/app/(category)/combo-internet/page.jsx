@@ -6,7 +6,8 @@ import ServiceListComponent from "@/components/service-list";
 import { SUB_CATEGORY_2_ITEMS } from "@/data/category";
 import CategoryCardComponent from "@/components/category-card";
 import ServicePriceTableComponent from "@/components/service-price-table";
-import data1 from "@/data/internet-plans-1.json";
+import data3 from "@/data/internet-plans-3.json";
+import data4 from "@/data/internet-plans-4.json";
 import ContactComponent from "@/components/contact";
 
 export default function ComboInternetPage() {
@@ -38,12 +39,12 @@ export default function ComboInternetPage() {
           />
           {categorySelectedIndex === 0 && (
             <ServicePriceTableComponent
-              data={data1}
+              data={data3}
               title='Bảng giá internet + truyền hình FPT Play kèm Box Tivi chất lượng 4K'
             />
           )}
           {categorySelectedIndex === 1 && (
-            <ServicePriceTableComponent data={data1} title='Bảng giá Combo Zplay Internet + Tài khoản giải trí' />
+            <ServicePriceTableComponent data={data4} title='Bảng giá Combo Zplay Internet + Tài khoản giải trí' />
           )}
         </section>
         <ServiceListComponent />

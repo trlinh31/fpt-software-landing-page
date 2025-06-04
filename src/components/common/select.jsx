@@ -31,7 +31,7 @@ export default function SelectComponent({ label, isRequired = true, options, onS
           </div>
 
           <ul
-            className={`absolute top-[calc(100%_+_2px)] left-0 w-full bg-white border border-[#dbdee0] rounded-b-[6px] divide-y-2 ${
+            className={`absolute top-[calc(100%_+_2px)] left-0 w-full bg-white border border-[#dbdee0] rounded-b-[6px] divide-y-2 bg-white z-10 ${
               !isOpen && "hidden"
             }`}>
             {options?.length > 0 &&

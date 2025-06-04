@@ -2,6 +2,8 @@ import { Lexend } from "next/font/google";
 import "@/assets/styles/globals.css";
 import HeaderComponent from "@/components/layouts/header";
 import { Toaster } from "react-hot-toast";
+import FooterComponent from "@/components/layouts/footer";
+import SocialLink from "@/components/social-link";
 
 const lexend = Lexend({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
 
@@ -17,6 +19,8 @@ export default function RootLayout({ children }) {
       <body className={`${lexend.className} antialiased`}>
         <HeaderComponent />
         <main>{children}</main>
+        <FooterComponent />
+        <SocialLink />
         <Toaster toastOptions={{ duration: 5000 }} />
       </body>
     </html>

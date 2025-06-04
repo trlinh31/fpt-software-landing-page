@@ -1,5 +1,5 @@
 export const CONTACT_INFORMATION = {
-  address: "Ha Noi, Viet Nam",
-  phone: "0163 999 999",
-  email: "example@gmail.com",
+  address: "Hoàng Mai, Hà Nội",
+  phone: process.env.NEXT_PUBLIC_PHONE_CONTACT,
+  email: process.env.NEXT_PUBLIC_EMAIL_CONTACT,
 };

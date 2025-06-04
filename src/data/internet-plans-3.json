@@ -5,30 +5,30 @@
       {
         "name": "GIGA",
         "speed": "300Mbps/300Mbps",
-        "districtPrice": 220000,
-        "suburbPrice": 190000,
+        "districtPrice": 240000,
+        "suburbPrice": 230000,
         "networkFee": 299000
       },
       {
         "name": "SKY",
         "speed": "Max 1Gbps/300Mbps",
-        "districtPrice": 235000,
-        "suburbPrice": 205000,
+        "districtPrice": 255000,
+        "suburbPrice": 235000,
         "networkFee": 299000
       },
       {
         "name": "F.Game",
         "speed": "Max 1Gbps/300Mbps + UltraFast",
-        "districtPrice": 295000,
-        "suburbPrice": 265000,
+        "districtPrice": 315000,
+        "suburbPrice": 285000,
         "networkFee": 299000
       },
       {
         "name": "META",
         "speed": "Max 1Gbps/Max 1Gbps",
-        "districtPrice": 325000,
-        "suburbPrice": 300000,
-        "networkFee": 299000
+        "districtPrice": 345000,
+        "suburbPrice": 250000,
+        "networkFee": 399000
       }
     ]
   },
@@ -38,29 +38,29 @@
       {
         "name": "GIGA",
         "speed": "300Mbps/300Mbps",
-        "districtPrice": 240000,
-        "suburbPrice": 210000,
+        "districtPrice": 260000,
+        "suburbPrice": 250000,
         "networkFee": 399000
       },
       {
         "name": "SKY",
         "speed": "Max 1Gbps/300Mbps",
-        "districtPrice": 255000,
-        "suburbPrice": 225000,
+        "districtPrice": 275000,
+        "suburbPrice": 255000,
         "networkFee": 399000
       },
       {
         "name": "F.GAME",
         "speed": "Max 1Gbps/300Mbps + UltraFast",
-        "districtPrice": 315000,
-        "suburbPrice": 285000,
+        "districtPrice": 335000,
+        "suburbPrice": 305000,
         "networkFee": 399000
       },
       {
         "name": "META",
         "speed": "Max 1Gbps/Max 1Gbps",
-        "districtPrice": 345000,
-        "suburbPrice": 320000,
+        "districtPrice": 365000,
+        "suburbPrice": 350000,
         "networkFee": 399000
       }
     ]
@@ -71,22 +71,22 @@
       {
         "name": "GIGA",
         "speed": "300Mbps/300Mbps",
-        "districtPrice": 260000,
-        "suburbPrice": 230000,
+        "districtPrice": 280000,
+        "suburbPrice": 270000,
         "networkFee": 499000
       },
       {
         "name": "SKY",
         "speed": "Max 1Gbps/300Mbps",
-        "districtPrice": 275000,
-        "suburbPrice": 245000,
+        "districtPrice": 295000,
+        "suburbPrice": 275000,
         "networkFee": 499000
       },
       {
         "name": "META",
         "speed": "Max 1Gbps/Max 1Gbps",
-        "districtPrice": 365000,
-        "suburbPrice": 340000,
+        "districtPrice": 385000,
+        "suburbPrice": 370000,
         "networkFee": 499000
       }
     ]

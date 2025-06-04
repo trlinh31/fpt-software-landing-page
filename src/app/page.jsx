@@ -1,6 +1,7 @@
 import BannerSlideComponent from "@/components/banner-slide";
 import CategoryListComponent from "@/components/category-list";
 import ContactComponent from "@/components/contact";
+import ServiceListComponent from "@/components/service-list";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <div className='container space-y-16 pb-10'>
           <CategoryListComponent />
           <ContactComponent />
+          <ServiceListComponent />
         </div>
       </div>
     </>
