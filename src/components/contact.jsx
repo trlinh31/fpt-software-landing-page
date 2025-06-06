@@ -41,6 +41,15 @@ export default function ContactComponent() {
     );
   };
 
+  const resetForm = () => {
+    setFormValue({
+      fullName: "",
+      phoneNumber: "",
+      address: "",
+      typeService: "",
+    });
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -66,6 +75,7 @@ export default function ContactComponent() {
         },
       });
 
+      resetForm();
       toast.success(MESSAGES.SUBMIT_FORM_SUCCESS);
     } catch (error) {
       console.error("Lỗi khi gửi form: ", error.message);
@@ -89,6 +99,7 @@ export default function ContactComponent() {
               id='fullName'
               label='Họ và tên'
               placeholder='Nhập họ và tên của bạn'
+              value={formValue.fullName}
               onChange={onInputChange}
               validate={(value) => {
                 if (!REGEX.VALID_FULLNAME.test(value)) return MESSAGES.INVALID_FULLNAME;
@@ -101,6 +112,7 @@ export default function ContactComponent() {
               type='tel'
               maxLength={12}
               placeholder='Nhập số điện thoại của bạn'
+              value={formValue.phoneNumber}
               onChange={onInputChange}
               validate={(value) => {
                 if (!REGEX.VALID_VIETNAM_PHONE_NUMBER.test(value)) return MESSAGES.INVALID_PHONE_NUMBER;
@@ -111,6 +123,7 @@ export default function ContactComponent() {
               id='address'
               label='Địa chỉ'
               placeholder='Nhập địa chỉ của bạn'
+              value={formValue.address}
               onChange={onInputChange}
               validate={(value) => {
                 if (!REGEX.REQUIRED_FIELD.test(value)) return MESSAGES.INVALID_ADDRESS;
@@ -120,6 +133,7 @@ export default function ContactComponent() {
             <SelectComponent
               label='Dịch vụ đăng ký'
               options={TYPE_SERVICES}
+              value={formValue.typeService}
               onSelectChange={onSelectChange}
               placeholder='Chọn loại dịch vụ'
             />
