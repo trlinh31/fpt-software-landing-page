@@ -27,11 +27,9 @@ export default function BannerSlideComponent() {
           delay: 2000,
           disableOnInteraction: false,
         }}>
-        {BANNER_IMAGES.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className='relative w-full md:h-[560px] h-[287px]'>
-              <img src={item.url} className='w-full h-full object-cover' alt='FPT Software' />
-            </div>
+        {BANNER_IMAGES.map((item) => (
+          <SwiperSlide key={item.url}>
+            <img src={item.url} className='w-full h-auto lg:h-[600px] object-cover' alt='FPT' />
           </SwiperSlide>
         ))}
       </Swiper>

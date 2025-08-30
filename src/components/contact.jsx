@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import HeadingComponent from "@/components/common/heading";
 import ContactImagePath from "@/assets/images/contact.jpg";
 import InputComponent from "./common/input";
@@ -11,6 +11,7 @@ import { REGEX } from "@/constants/regex";
 import { formatDateTime } from "@/helpers/formatDateTime";
 import { MESSAGES } from "@/constants/message";
 import toast from "react-hot-toast";
+import { useLoadingStore } from "@/stores/useLoadingStore";
 
 export default function ContactComponent() {
   const [formValue, setFormValue] = useState({
@@ -19,7 +20,7 @@ export default function ContactComponent() {
     address: "",
     typeService: "",
   });
-  const [isLoading, setLoading] = useState(false);
+  const { setLoading } = useLoadingStore();
 
   const onInputChange = (e) => {
     const { id, value } = e.target;
@@ -30,16 +31,16 @@ export default function ContactComponent() {
     setFormValue({ ...formValue, typeService: value });
   };
 
-  const isFormInvalid = () => {
-    return (
+  const isFormInvalid = useMemo(
+    () =>
       !formValue.fullName.trim() ||
       !formValue.phoneNumber.trim() ||
       !formValue.address.trim() ||
       !REGEX.VALID_FULLNAME.test(formValue.fullName) ||
       !REGEX.VALID_VIETNAM_PHONE_NUMBER.test(formValue.phoneNumber) ||
-      !formValue.typeService
-    );
-  };
+      !formValue.typeService,
+    [formValue]
+  );
 
   const resetForm = () => {
     setFormValue({
@@ -52,13 +53,9 @@ export default function ContactComponent() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (isFormInvalid()) return;
-    if (isLoading) return;
+    setLoading(true);
 
     try {
-      setLoading(true);
-
       const payload = {
         fullName: formValue.fullName.trim(),
         phoneNumber: formValue.phoneNumber.trim(),
@@ -67,19 +64,18 @@ export default function ContactComponent() {
         submittedAt: formatDateTime(new Date()),
       };
 
-      await fetch(process.env.NEXT_PUBLIC_API_URL, {
+      const res = await fetch("/api/contact", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
       });
+
+      if (!res.ok) throw new Error("Đã xảy ra lỗi, vui lòng thử lại!");
 
       resetForm();
       toast.success(MESSAGES.SUBMIT_FORM_SUCCESS);
     } catch (error) {
-      console.error("Lỗi khi gửi form: ", error.message);
-      toast.error(MESSAGES.SUBMIT_FORM_ERROR);
+      toast.error(error.message || MESSAGES.SUBMIT_FORM_ERROR);
     } finally {
       setLoading(false);
     }
@@ -138,7 +134,7 @@ export default function ContactComponent() {
               placeholder='Chọn loại dịch vụ'
             />
           </div>
-          <ButtonComponent label='Gửi' type='submit' disabled={isFormInvalid() || isLoading} />
+          <ButtonComponent label='Gửi' type='submit' disabled={isFormInvalid} />
         </form>
       </div>
     </>

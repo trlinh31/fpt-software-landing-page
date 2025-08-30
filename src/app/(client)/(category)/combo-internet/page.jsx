@@ -1,25 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeadingComponent from "@/components/common/heading";
 import ServiceListComponent from "@/components/service-list";
 import { SUB_CATEGORY_2_ITEMS } from "@/data/category";
 import CategoryCardComponent from "@/components/category-card";
-import ServicePriceTableComponent from "@/components/service-price-table";
-import data3 from "@/data/internet-plans-3.json";
-import data4 from "@/data/internet-plans-4.json";
 import ContactComponent from "@/components/contact";
+import { useLoadingStore } from "@/stores/useLoadingStore";
+
+const headingMaps = {
+  0: "Combo Internet + Truyện hình FPT",
+  1: "Combo Zplay",
+};
 
 export default function ComboInternetPage() {
   const [categorySelectedIndex, setCategorySelectedIndex] = useState(0);
+  const [categoryName, setCategoryName] = useState(SUB_CATEGORY_2_ITEMS[0].name);
+  const [imageData, setImageData] = useState(null);
+  const { setLoading } = useLoadingStore();
 
-  const headingMaps = {
-    0: "Combo Internet + Truyện hình FPT",
-    1: "Combo Zplay",
+  useEffect(() => {
+    fetchImage();
+  }, [categorySelectedIndex, categoryName]);
+
+  const fetchImage = async () => {
+    setLoading(true);
+
+    try {
+      const response = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      setImageData(data);
+    } catch (error) {
+      toast.error("Đã xảy ra lỗi khi tải ảnh");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onCategorySelect = (index) => {
     setCategorySelectedIndex(index);
+    setCategoryName(SUB_CATEGORY_2_ITEMS[index].name);
   };
 
   return (
@@ -27,7 +49,7 @@ export default function ComboInternetPage() {
       <div className='container py-10 space-y-16'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-16'>
           {SUB_CATEGORY_2_ITEMS.map((item, index) => (
-            <div onClick={() => onCategorySelect(index)} key={index}>
+            <div onClick={() => onCategorySelect(index)} key={item.name}>
               <CategoryCardComponent category={item} isDisabled={index !== categorySelectedIndex} />
             </div>
           ))}
@@ -37,15 +59,7 @@ export default function ComboInternetPage() {
             title={headingMaps[categorySelectedIndex]}
             description='FPT Telecom tự hào là Nhà cung cấp Dịch vụ Internet hàng đầu Việt Nam'
           />
-          {categorySelectedIndex === 0 && (
-            <ServicePriceTableComponent
-              data={data3}
-              title='Bảng giá internet + truyền hình FPT Play kèm Box Tivi chất lượng 4K'
-            />
-          )}
-          {categorySelectedIndex === 1 && (
-            <ServicePriceTableComponent data={data4} title='Bảng giá Combo Zplay Internet + Tài khoản giải trí' />
-          )}
+          {imageData && <img src={imageData.url} className='w-full h-auto' alt='FPT' />}
         </section>
         <ServiceListComponent />
         <ContactComponent />

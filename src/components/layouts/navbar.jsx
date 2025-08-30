@@ -22,7 +22,7 @@ export default function NavbarComponent() {
         <div className='container flex h-full'>
           <div className='w-full flex items-center justify-between py-4'>
             <Link href='/'>
-              <Image src={FptLogoImagePath} alt='FPT logo' />
+              <Image src={FptLogoImagePath} alt='FPT' />
             </Link>
 
             <ul className='hidden md:flex items-center gap-x-14'>
@@ -32,9 +32,7 @@ export default function NavbarComponent() {
                 return (
                   <li
                     key={index}
-                    className={`font-semibold text-[18px] hover:text-custom duration-100 transition-colors ease-in ${
-                      isActive ? "text-custom" : ""
-                    }`}>
+                    className={`font-semibold text-[18px] hover:text-custom duration-100 transition-colors ease-in ${isActive ? "text-custom" : ""}`}>
                     <Link href={item.path}>{item.title}</Link>
                   </li>
                 );
@@ -63,9 +61,7 @@ export default function NavbarComponent() {
 
                       return (
                         <li key={index} className='w-full' onClick={toggleMenu}>
-                          <Link
-                            href={item.path}
-                            className={`pl-[20px] py-[15px] block ${isActive ? "text-custom" : ""}`}>
+                          <Link href={item.path} className={`pl-[20px] py-[15px] block ${isActive ? "text-custom" : ""}`}>
                             {item.title}
                           </Link>
                         </li>
