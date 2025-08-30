@@ -15,56 +15,55 @@ const headingMaps = {
 };
 
 export default function InternetFptPage() {
-  const [categorySelectedIndex, setCategorySelectedIndex] = useState(0);
-  const [categoryName, setCategoryName] = useState(SUB_CATEGORY_1_ITEMS[0].name);
+  const [categoryIndex, setCategoryIndex] = useState(0);
   const [imageData, setImageData] = useState(null);
   const { setLoading } = useLoadingStore();
 
   useEffect(() => {
+    let ignore = false;
+    const controller = new AbortController();
+
+    const fetchImage = async () => {
+      setLoading(true);
+      try {
+        const categoryName = SUB_CATEGORY_1_ITEMS[categoryIndex].name;
+        const res = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`, {
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error("Fetch error");
+        const data = await res.json();
+        if (!ignore) setImageData(data);
+      } catch (err) {
+        if (!ignore) toast.error("Đã xảy ra lỗi khi tải ảnh");
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    };
+
     fetchImage();
-  }, [categorySelectedIndex, categoryName]);
-
-  const fetchImage = async () => {
-    setLoading(true);
-
-    try {
-      const response = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`, {
-        method: "GET",
-      });
-      const data = await response.json();
-      setImageData(data);
-    } catch (error) {
-      toast.error("Đã xảy ra lỗi khi tải ảnh");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const onCategorySelect = (index) => {
-    setCategorySelectedIndex(index);
-    setCategoryName(SUB_CATEGORY_1_ITEMS[index].name);
-  };
+    return () => {
+      ignore = true;
+      controller.abort();
+    };
+  }, [categoryIndex, setLoading]);
 
   return (
-    <>
-      <div className='container py-10 space-y-16'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-16'>
-          {SUB_CATEGORY_1_ITEMS.map((item, index) => (
-            <div onClick={() => onCategorySelect(index)} key={item.name}>
-              <CategoryCardComponent category={item} isDisabled={index !== categorySelectedIndex} />
-            </div>
-          ))}
-        </div>
-        <section>
-          <HeadingComponent
-            title={headingMaps[categorySelectedIndex]}
-            description='FPT Telecom tự hào là Nhà cung cấp Dịch vụ Internet hàng đầu Việt Nam'
-          />
-          {imageData && <img src={imageData.url} className='w-full h-auto' alt='FPT' />}
-        </section>
-        <ServiceListComponent />
-        <ContactComponent />
+    <div className='container py-10 space-y-16'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-16'>
+        {SUB_CATEGORY_1_ITEMS.map((item, index) => (
+          <button key={item.name} onClick={() => setCategoryIndex(index)} className='w-full text-left'>
+            <CategoryCardComponent category={item} isDisabled={index !== categoryIndex} />
+          </button>
+        ))}
       </div>
-    </>
+
+      <section>
+        <HeadingComponent title={headingMaps[categoryIndex]} description='FPT Telecom tự hào là Nhà cung cấp Dịch vụ Internet hàng đầu Việt Nam' />
+        {imageData && <img src={imageData.url} className='w-full h-auto' alt={SUB_CATEGORY_1_ITEMS[categoryIndex].name} />}
+      </section>
+
+      <ServiceListComponent />
+      <ContactComponent />
+    </div>
   );
 }
