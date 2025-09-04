@@ -18,21 +18,15 @@ export default function BannerSlideComponent() {
   };
 
   return (
-    <>
-      <Swiper
-        pagination={pagination}
-        modules={[Pagination, Autoplay]}
-        loop
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}>
-        {BANNER_IMAGES.map((item) => (
-          <SwiperSlide key={item.url}>
-            <img src={item.url} className='w-full h-auto lg:h-[600px] object-cover' alt='FPT' />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+    <Swiper pagination={pagination} modules={[Pagination, Autoplay]} autoplay loop>
+      {BANNER_IMAGES.map((item, index) => (
+        <SwiperSlide key={index}>
+          <picture>
+            <source media='(min-width: 768px)' srcSet={item.desktop} />
+            <img src={item.mobile} className='w-full h-auto object-cover' alt='FPT' loading='lazy' />
+          </picture>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }

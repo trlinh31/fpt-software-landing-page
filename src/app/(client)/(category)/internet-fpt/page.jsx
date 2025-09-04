@@ -48,8 +48,8 @@ export default function InternetFptPage() {
   }, [categoryIndex, setLoading]);
 
   return (
-    <div className='container py-10 space-y-16'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-16'>
+    <div className='space-y-16 py-10 container'>
+      <div className='gap-16 grid grid-cols-1 md:grid-cols-2'>
         {SUB_CATEGORY_1_ITEMS.map((item, index) => (
           <button key={item.name} onClick={() => setCategoryIndex(index)} className='w-full text-left'>
             <CategoryCardComponent category={item} isDisabled={index !== categoryIndex} />
