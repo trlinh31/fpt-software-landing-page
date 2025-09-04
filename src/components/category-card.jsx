@@ -14,7 +14,7 @@ export default function CategoryCardComponent({ category, isDisabled }) {
               src={category.imageUrl}
               height='1000'
               width='1000'
-              className='group-hover/card:shadow-xl rounded-xl w-full h-80 object-cover'
+              className='group-hover/card:shadow-xl rounded-xl w-full h-60 lg:h-80 object-cover'
               alt={category.name}
             />
           </CardItem>
