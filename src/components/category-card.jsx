@@ -8,18 +8,18 @@ export default function CategoryCardComponent({ category, isDisabled }) {
   return (
     <CardContainer className={`inter-var ${isDisabled ? "brightness-50 opacity-30 pointer-events-none" : ""}`}>
       <Link href={category.path}>
-        <CardBody className='bg-gray-50 relative group/card border-black/[0.1] w-full h-auto rounded-xl border'>
+        <CardBody className='group/card relative bg-gray-50 border border-black/[0.1] rounded-xl w-full h-auto'>
           <CardItem translateZ='100' className='w-full'>
             <img
               src={category.imageUrl}
               height='1000'
               width='1000'
-              className='h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl'
+              className='group-hover/card:shadow-xl rounded-xl w-full h-80 object-cover'
               alt={category.name}
             />
           </CardItem>
           <div className='py-6'>
-            <h1 className='text-center text-2xl font-bold'>{category.name}</h1>
+            <h1 className='font-bold text-2xl text-center'>{category.name}</h1>
           </div>
         </CardBody>
       </Link>

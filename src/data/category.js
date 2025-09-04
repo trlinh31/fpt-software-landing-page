@@ -25,7 +25,7 @@ export const SUB_CATEGORY_1_ITEMS = [
   {
     path: "#",
     name: "Combo Internet Doanh nghiệp",
-    imageUrl: "https://s3-api.fpt.vn/fptvn-storage/2024-12-18/1734534389_cacgoiinternet.jpg",
+    imageUrl: "https://wifi-fpt.com.vn/wp-content/uploads/2021/11/ca%CC%81p-quang-fpt-doanh-nghie%CC%A3p.png",
   },
 ];
 
@@ -38,6 +38,6 @@ export const SUB_CATEGORY_2_ITEMS = [
   {
     path: "#",
     name: "Combo Zplay",
-    imageUrl: "https://dangkyinternet.com/wp-content/uploads/2021/06/lap-dat-combo-truyen-hinh-fpt-internet-fpt.png",
+    imageUrl: "https://wififptninhthuan.vn/wp-content/uploads/sites/319/2025/03/ZPlay-xem-duoc-nhung-gi.png",
   },
 ];
