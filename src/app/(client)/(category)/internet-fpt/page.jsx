@@ -20,31 +20,22 @@ export default function InternetFptPage() {
   const { setLoading } = useLoadingStore();
 
   useEffect(() => {
-    let ignore = false;
-    const controller = new AbortController();
-
     const fetchImage = async () => {
       setLoading(true);
       try {
         const categoryName = SUB_CATEGORY_1_ITEMS[categoryIndex].name;
-        const res = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`, {
-          signal: controller.signal,
-        });
+        const res = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`);
         if (!res.ok) throw new Error("Fetch error");
         const data = await res.json();
-        if (!ignore) setImageData(data);
+        setImageData(data);
       } catch (err) {
-        if (!ignore) toast.error("Đã xảy ra lỗi khi tải ảnh");
+        toast.error("Đã xảy ra lỗi khi tải ảnh");
       } finally {
-        if (!ignore) setLoading(false);
+        setLoading(false);
       }
     };
 
     fetchImage();
-    return () => {
-      ignore = true;
-      controller.abort();
-    };
   }, [categoryIndex, setLoading]);
 
   return (

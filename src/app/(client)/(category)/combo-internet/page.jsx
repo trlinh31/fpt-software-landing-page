@@ -20,34 +20,27 @@ export default function ComboInternetPage() {
   const { setLoading } = useLoadingStore();
 
   useEffect(() => {
-    let ignore = false;
-    const controller = new AbortController();
-
     const fetchImage = async () => {
       setLoading(true);
       try {
         const categoryName = SUB_CATEGORY_2_ITEMS[categoryIndex].name;
-        const res = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`, { signal: controller.signal });
+        const res = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`);
         if (!res.ok) throw new Error("Fetch error");
         const data = await res.json();
-        if (!ignore) setImageData(data);
+        setImageData(data);
       } catch (err) {
-        if (!ignore) toast.error("Đã xảy ra lỗi khi tải ảnh");
+        toast.error("Đã xảy ra lỗi khi tải ảnh");
       } finally {
-        if (!ignore) setLoading(false);
+        setLoading(false);
       }
     };
 
     fetchImage();
-    return () => {
-      ignore = true;
-      controller.abort();
-    };
   }, [categoryIndex, setLoading]);
 
   return (
-    <div className='container py-10 space-y-16'>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-16'>
+    <div className='space-y-16 py-10 container'>
+      <div className='gap-16 grid grid-cols-1 md:grid-cols-2'>
         {SUB_CATEGORY_2_ITEMS.map((item, index) => (
           <button key={item.name} onClick={() => setCategoryIndex(index)} className='w-full text-left'>
             <CategoryCardComponent category={item} isDisabled={index !== categoryIndex} />

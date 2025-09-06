@@ -1,5 +1,3 @@
-"use client";
-
 import BannerSlideComponent from "@/components/banner-slide";
 import CategoryListComponent from "@/components/category-list";
 import ContactComponent from "@/components/contact";
