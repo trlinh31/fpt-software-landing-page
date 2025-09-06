@@ -29,6 +29,7 @@ export default function ComboInternetPage() {
         const data = await res.json();
         setImageData(data);
       } catch (err) {
+        console.error(err);
         toast.error("Đã xảy ra lỗi khi tải ảnh");
       } finally {
         setLoading(false);
