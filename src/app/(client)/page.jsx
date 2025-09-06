@@ -1,9 +1,38 @@
+"use client";
+
+import { useEffect } from "react";
 import BannerSlideComponent from "@/components/banner-slide";
 import CategoryListComponent from "@/components/category-list";
 import ContactComponent from "@/components/contact";
 import ServiceListComponent from "@/components/service-list";
 
 export default function Home() {
+  useEffect(() => {
+    let interval = null;
+    const originalTitle = document.title;
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        let show = true;
+        interval = setInterval(() => {
+          document.title = show ? "1 tin nhắn mới" : originalTitle;
+          show = !show;
+        }, 1000);
+      } else {
+        if (interval) clearInterval(interval);
+        document.title = originalTitle;
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      if (interval) clearInterval(interval);
+      document.title = originalTitle;
+    };
+  }, []);
+
   return (
     <section className='space-y-10 md:space-y-16'>
       <BannerSlideComponent />
