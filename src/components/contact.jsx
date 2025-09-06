@@ -84,9 +84,9 @@ export default function ContactComponent() {
   return (
     <>
       <HeadingComponent title='Liên hệ' description='Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn.' />
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-16'>
-        <div className='flex items-center justify-center h-auto max-h-[592px]'>
-          <img src={ContactImagePath.src} className='w-full h-full' alt='' />
+      <div className='gap-16 grid grid-cols-1 md:grid-cols-2'>
+        <div className='flex justify-center items-center h-auto max-h-[592px]'>
+          <img src={ContactImagePath.src} className='w-full h-full' alt='FPT Software' loading='lazy' />
         </div>
 
         <form onSubmit={onSubmit}>
