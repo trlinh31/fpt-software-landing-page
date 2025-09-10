@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import CategoryCardComponent from "@/components/category-card";
 import HeadingComponent from "@/components/common/heading";
+import ContactComponent from "@/components/contact";
 import ServiceListComponent from "@/components/service-list";
 import { SUB_CATEGORY_2_ITEMS } from "@/data/category";
-import CategoryCardComponent from "@/components/category-card";
-import ContactComponent from "@/components/contact";
-import toast from "react-hot-toast";
 import { useLoadingStore } from "@/stores/useLoadingStore";
+import { useEffect, useMemo, useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 const headingMaps = {
-  1: "Combo Internet + Truyện hình FPT",
+  1: "Combo Internet + Truyền hình FPT",
   2: "Combo Zplay",
 };
 
