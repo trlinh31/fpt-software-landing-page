@@ -3,6 +3,7 @@
 import CategoryCardComponent from "@/components/category-card";
 import HeadingComponent from "@/components/common/heading";
 import ContactComponent from "@/components/contact";
+import Hotline from "@/components/hotline";
 import ServiceListComponent from "@/components/service-list";
 import { SUB_CATEGORY_2_ITEMS } from "@/data/category";
 import { useLoadingStore } from "@/stores/useLoadingStore";
@@ -15,21 +16,22 @@ const headingMaps = {
 };
 
 export default function ComboInternetPage() {
-  const [categoryId, setCategoryId] = useState();
+  const [categoryId, setCategoryId] = useState(SUB_CATEGORY_2_ITEMS[0]?.id);
   const [imageData, setImageData] = useState();
   const { setLoading } = useLoadingStore();
   const sectionRef = useRef();
   const memoizedCategory = useMemo(() => SUB_CATEGORY_2_ITEMS.find((item) => item.id === categoryId), [categoryId]);
 
   useEffect(() => {
-    setCategoryId(SUB_CATEGORY_2_ITEMS[0].id);
-  }, []);
-
-  useEffect(() => {
     const fetchImage = async () => {
+      const categoryName = memoizedCategory?.name;
+
+      if (!categoryName) {
+        return;
+      }
+
       setLoading(true);
       try {
-        const categoryName = memoizedCategory?.name;
         const res = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`);
         const data = await res.json();
         setImageData(data);
@@ -42,7 +44,7 @@ export default function ComboInternetPage() {
     };
 
     fetchImage();
-  }, [categoryId]);
+  }, [memoizedCategory, setLoading]);
 
   const handleCategoryClick = (id) => {
     setCategoryId(id);
@@ -61,7 +63,13 @@ export default function ComboInternetPage() {
 
       <section ref={sectionRef}>
         <HeadingComponent title={headingMaps[categoryId]} description='FPT Telecom tự hào là Nhà cung cấp Dịch vụ Internet hàng đầu Việt Nam' />
-        {imageData && <img src={imageData.url} className='w-full h-auto' alt='FPT Software' loading='lazy' />}
+        {imageData && <img src={imageData.url} className='w-full h-auto' alt='FPT Software' />}
+      </section>
+
+      <section className='bg-slate-100'>
+        <section className='py-10 container'>
+          <Hotline />
+        </section>
       </section>
 
       <ServiceListComponent />

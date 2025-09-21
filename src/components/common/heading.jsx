@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function HeadingComponent({ title, description }) {
   return (
     <section className='mb-[30px] md:mb-[60px] pt-3 text-center'>

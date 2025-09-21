@@ -1,8 +1,8 @@
 import HeadingComponent from "@/components/common/heading";
 import ContactComponent from "@/components/contact";
+import Hotline from "@/components/hotline";
 import ServiceListComponent from "@/components/service-list";
 import { BANNER_IMAGES } from "@/data/banner";
-import React from "react";
 
 export default function CameraPage() {
   return (
@@ -22,6 +22,13 @@ export default function CameraPage() {
             </div>
           </div>
         </section>
+
+        <section className='bg-slate-100'>
+          <section className='py-10 container'>
+            <Hotline />
+          </section>
+        </section>
+
         <div className='space-y-10 container'>
           <ServiceListComponent />
           <ContactComponent />
