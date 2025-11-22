@@ -25,16 +25,16 @@ export default function InputComponent({ label, isRequired = true, validate, ...
 
   return (
     <>
-      <div className='space-y-[12px]'>
+      <div className='space-y-[6px]'>
         <label htmlFor={props.id} className='flex items-center gap-x-[5px] font-medium'>
           {label}
           {isRequired && <span className='text-[#FF0000]'>*</span>}
         </label>
-        <div className='flex box-border border-2 border-[#dbdee0] rounded-[6px] overflow-hidden focus-within:border-custom'>
+        <div className='box-border flex border-[#dbdee0] border-2 focus-within:border-custom rounded-[6px] overflow-hidden'>
           <input
             {...props}
             type={props.type}
-            className='block py-[12px] pr-[10px] pl-[16px] w-full box-border bg-white min-h-[44px] outline-none border-0 font-medium placeholder:text-slate-400'
+            className='block box-border bg-white py-[12px] pr-[10px] pl-[16px] border-0 outline-none w-full min-h-[44px] font-medium placeholder:text-slate-400'
             placeholder={props.placeholder}
             onBlur={handleTrimOnBlur}
             onChange={handleOnInputChange}
@@ -43,7 +43,7 @@ export default function InputComponent({ label, isRequired = true, validate, ...
           />
         </div>
 
-        {error && <p className='text-sm text-red-500'>{error}</p>}
+        {error && <p className='text-red-500 text-sm'>{error}</p>}
       </div>
     </>
   );

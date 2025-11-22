@@ -15,8 +15,13 @@ const headingMaps = {
   2: "Combo Zplay",
 };
 
+const IMAGES_DATA = {
+  1: "https://res.cloudinary.com/drfnttm55/image/upload/v1756868848/lapmangfpt/lri1bisvjflkrrtdrzvb.jpg",
+  2: "https://res.cloudinary.com/drfnttm55/image/upload/v1757037413/lapmangfpt/i5dshqp80bjb2xwgejv1.png",
+};
+
 export default function ComboInternetPage() {
-  const [categoryId, setCategoryId] = useState(SUB_CATEGORY_2_ITEMS[0]?.id);
+  const [categoryId, setCategoryId] = useState(1);
   const [imageData, setImageData] = useState();
   const { setLoading } = useLoadingStore();
   const sectionRef = useRef();
@@ -24,20 +29,14 @@ export default function ComboInternetPage() {
 
   useEffect(() => {
     const fetchImage = async () => {
-      const categoryName = memoizedCategory?.name;
-
-      if (!categoryName) {
-        return;
-      }
-
       setLoading(true);
+
       try {
-        const res = await fetch(`/api/images?packageType=${encodeURIComponent(categoryName)}`);
-        const data = await res.json();
-        setImageData(data);
-      } catch (err) {
-        console.error(err);
-        toast.error("Đã xảy ra lỗi khi tải ảnh! Vui lòng tải lại trang.");
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        const imageUrl = IMAGES_DATA[memoizedCategory.id];
+        setImageData({ url: imageUrl });
+      } catch {
+        toast.error("Đã có lỗi xảy ra khi tải hình ảnh. Vui lòng thử lại sau.");
       } finally {
         setLoading(false);
       }
