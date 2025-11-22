@@ -143,7 +143,7 @@ export default function ContactModal() {
           </div>
           <DialogFooter>
             <DialogClose asChild>
-              <Button type='button' variant='outline'>
+              <Button type='button' variant='ghost'>
                 Đóng
               </Button>
             </DialogClose>
