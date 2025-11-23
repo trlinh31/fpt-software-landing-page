@@ -6,11 +6,6 @@ export default function InputComponent({ label, isRequired = true, validate, ...
   const handleTrimOnBlur = (e) => {
     const value = e.target.value.trim();
     e.target.value = value;
-
-    if (validate) {
-      const err = validate(value);
-      setError(err);
-    }
   };
 
   const handleOnInputChange = (e) => {
